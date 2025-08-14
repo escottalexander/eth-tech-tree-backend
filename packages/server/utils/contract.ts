@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ETHERSCAN_API_KEY, execute } from ".";
+import { ETHERSCAN_API_KEY, NETWORK_TO_CHAIN_ID, execute } from ".";
 import { type SubmissionConfig } from "../types";
 import fs from "fs";
 
@@ -12,8 +12,12 @@ export const downloadContract = async (
 ): Promise<void> => {
   const { challenge, network, contractAddress } = config;
   console.log(`📡 Downloading ${contractAddress} from ${network}...`);
-  const API_URL = `https://api-${network}.etherscan.io/api`;
-  const paramString = `?module=contract&action=getsourcecode&address=${contractAddress}&apikey=${ETHERSCAN_API_KEY}`;
+  const chainId = NETWORK_TO_CHAIN_ID[network];
+  if (!chainId) {
+    throw new Error(`Unsupported network for Etherscan V2: ${network}`);
+  }
+  const API_URL = `https://api.etherscan.io/v2/api`;
+  const paramString = `?chainid=${chainId}&module=contract&action=getsourcecode&address=${contractAddress}&apikey=${ETHERSCAN_API_KEY}`;
 
   let sourceCodeParsed;
   try {
