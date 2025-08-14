@@ -9,3 +9,5 @@ export const SERVER_CERT = process.env.SERVER_CERT || "server.cert";
 export const SERVER_KEY = process.env.SERVER_KEY || "server.key";
 export const SKIP_TEST_EXISTS_CHECK = process.env.SKIP_TEST_EXISTS_CHECK || false;
 export const EXTENSION_REPO = process.env.EXTENSION_REPO || "BuidlGuidl/eth-tech-tree-challenges";
+
+export const NETWORK_TO_CHAIN_ID: Record<string, number> = { sepolia: 11155111 };
