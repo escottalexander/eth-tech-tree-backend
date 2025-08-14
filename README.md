@@ -23,7 +23,7 @@ Before you begin, you need to install the following tools:
 2. Set up your environment variables:
    Make a copy of the `.env.example` file and name it `.env.local` and fill in the required environment variables.
 
-    Set up an [Etherscan API Key](https://etherscan.io/apis).
+    Set up an [Etherscan API Key](https://etherscan.io/apis) (V2). The app uses the unified V2 endpoint with `chainid`.
     Also set up the `MONGODB_URI` pointing to a local or [hosted](https://www.mongodb.com/products/platform/atlas-database) MongoDB instance.
     
 
